@@ -1,6 +1,9 @@
 let userType = "subscriber";
 let userCategory;
 
+let isAuthenticated = true;
+let authenticationStatus = isAuthenticated ? "Authenticated" : "Not authenticated";
+
 switch (userType) {
     case "admin":
         userCategory = "Administrator";
@@ -16,3 +19,4 @@ switch (userType) {
 }
 
 console.log("User Category:", userCategory);
+console.log("Authentication Status:", authenticationStatus);
