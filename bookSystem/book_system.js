@@ -10,7 +10,8 @@ function addBook() {
             name: bookName,
             authorName: authorName,
             bookDescription: bookDescription,
-            pagesNumber: pagesNumber
+            pagesNumber: pagesNumber,
+            myBookIndex: 0,
         };
         books.push(book);
         showbooks();
@@ -23,10 +24,12 @@ function addBook() {
 function showbooks()
 {
     const booksDiv = books.map((book,index) => `<h1>book Number: ${index + 1}</h1>
+    ${book.myBookIndex = index + 1}
     <p><strong>Book Name: </strong>${book.name}</p>
     <p><strong>Author Name: </strong>${book.authorName}</p>
     <p><strong>Book Description: </strong>${book.bookDescription}</p>
-    <p><strong>No. of Pages:</strong> ${book.pagesNumber}mins</p>`)
+    <p><strong>No. of Pages:</strong> ${book.pagesNumber}mins</p>
+    <button onclick="deleteBook(${book.myBookIndex})">Delete book</button>`)
     document.getElementById('books').innerHTML = booksDiv;
 }
 
@@ -36,4 +39,13 @@ function clearInputs()
     document.getElementById('authorName').value = '';
     document.getElementById('bookDescription').value = '';
     document.getElementById('pagesNumber').value = '';
+}
+
+/*Search for the index we're currently in (the button is currently in)
+Once you get that index, assign it to a variable for now, then use splice to cut it from array
+*/
+function deleteBook(index)
+{
+    books.splice(index-1,1);
+    showbooks();
 }
